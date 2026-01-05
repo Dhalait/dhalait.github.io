@@ -4,78 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dhalait URL Shortener</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #fff;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-    margin: 0;
-  }
-  img.banner {
-    width: 200px;
-    border-radius: 16px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  input {
-    width: 300px;
-    max-width: 90%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-    font-size: 1rem;
-    outline: none;
-  }
-  button {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: none;
-    background-color: #000;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  button:hover {
-    background-color: #333;
-  }
-  #result {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    word-break: break-all;
-    background: #f2f2f2;
-    padding: 12px 15px;
-    border-radius: 12px;
-    width: fit-content;
-    max-width: 90%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  a {
-    color: #000;
-    text-decoration: underline;
-  }
+body { font-family: sans-serif; padding: 20px; }
+input { width: 100%; padding: 10px; margin-top:10px; }
+button { margin-top:10px; padding:10px; }
 </style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-<img src="dhalait.jpg" class="banner" alt="Dhalait Banner">
 <h1>Dhalait URL Shortener</h1>
-<div>
-  <input id="longUrl" placeholder="Enter your URL here">
-  <button onclick="shorten()">Shorten</button>
-</div>
+<input id="longUrl" placeholder="Enter URL">
+<button onclick="shorten()">Shorten</button>
 <div id="result"></div>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="script.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC-bFQky9UW84g9y4Bnysuk0WR0c5EVqgw",
+  authDomain: "dhalait-54fa9.firebaseapp.com",
+  projectId: "dhalait-54fa9",
+  storageBucket: "dhalait-54fa9.firebasestorage.app",
+  messagingSenderId: "25482646032",
+  appId: "1:25482646032:web:e7040e22ad5012dd4a7095",
+  measurementId: "G-LF241G06HJ"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+function generateCode() {
+  return Math.random().toString(36).substring(2,8);
+}
+
+async function shorten() {
+  const longUrl = document.getElementById("longUrl").value.trim();
+  if(!longUrl) return alert("Enter a URL!");
+  const code = generateCode();
+  await db.collection("urls").doc(code).set({ long: longUrl });
+  const shortUrl = `${window.location.origin}/shortener/?code=${code}`;
+  document.getElementById("result").innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+}
+
+// Redirect logic
+window.onload = async () => {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  if(!code) return;
+  const doc = await db.collection("urls").doc(code).get();
+  if(doc.exists) window.location.href = doc.data().long;
+  else document.body.innerHTML = "<h2>Short URL not found!</h2>";
+};
+</script>
 </body>
 </html>
