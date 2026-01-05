@@ -5,10 +5,10 @@ body {
   color: #000;
 }
 
-.banner {
+header {
   width: 100%;
   height: 25vh;
-  background: url('dhalait.jpg') center/cover no-repeat;
+  background: url('Dhalait.jpg') center/cover no-repeat;
 }
 
 main {
@@ -108,4 +108,5 @@ a {
 a:hover {
   color: #4e4d4d;
 }
+
 
