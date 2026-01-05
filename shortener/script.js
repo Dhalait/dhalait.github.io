@@ -7,6 +7,7 @@ const firebaseConfig = {
   appId: "1:25482646032:web:e7040e22ad5012dd4a7095",
   measurementId: "G-LF241G06HJ"
 };
+
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
@@ -19,7 +20,7 @@ async function shorten() {
   if (!longUrl) return alert("Please enter a URL!");
   const shortCode = generateCode();
   await db.collection('urls').doc(shortCode).set({ long: longUrl });
-  const shortUrl = `${window.location.origin}/?code=${shortCode}`;
+  const shortUrl = `${window.location.origin}/shortener/?code=${shortCode}`;
   document.getElementById('result').innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
 }
 
