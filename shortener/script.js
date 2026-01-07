@@ -16,19 +16,45 @@ function generateCode() {
 }
 
 async function shorten() {
-  const longUrl = document.getElementById('longUrl').value.trim();
+  const longUrl = document.getElementById("longUrl").value.trim();
   if (!longUrl) return alert("Please enter a URL!");
-  const shortCode = generateCode();
-  await db.collection('urls').doc(shortCode).set({ long: longUrl });
-  const shortUrl = `${window.location.origin}/shortener/?code=${shortCode}`;
-  document.getElementById('result').innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+  
+  const code = generateCode();
+
+  await db.collection("urls").doc(code).set({ long: longUrl });
+
+  const shortUrl = `${window.location.origin}/?code=${code}`;
+  showPopup(shortUrl);
+}
+
+function showPopup(url) {
+  const popup = document.getElementById("popup");
+  const linkBox = document.getElementById("popupLink");
+  const copyBtn = document.getElementById("copyBtn");
+
+  linkBox.innerText = url;
+  popup.classList.remove("hidden");
+
+  copyBtn.onclick = () => {
+    navigator.clipboard.writeText(url).then(() => {
+      copyBtn.innerText = "Copied";
+      setTimeout(() => {
+        copyBtn.innerText = "Copy link";
+      }, 1500);
+    });
+  };
+}
+
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
 }
 
 window.onload = async () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
   if (!code) return;
-  const doc = await db.collection('urls').doc(code).get();
+
+  const doc = await db.collection("urls").doc(code).get();
   if (doc.exists) {
     window.location.href = doc.data().long;
   } else {

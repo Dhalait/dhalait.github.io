@@ -1,49 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhalait</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhalait</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body><br><br><br><br>
-  <header></header>
-<main>
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Dhalait is a cutting-edge technology company dedicated to creating innovative solutions for the modern world. We specialize in software development, AI, and web technologies that empower businesses and individuals alike.</p>
+
+<body>
+
+  <header class="banner" id="top">
+    <div class="brand">Dhalait</div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-text">
+      Calmly building reliable digital products<br>
+      with care, clarity, and long-term thinking.
+    </p>
+    <a href="#products" class="cta">Explore Products</a>
   </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <p>We provide a range of services including:</p>
-    <ul>
-      <li>Right now our service includes a URL shortener but more will come soon!!</li>
-    </ul>
-    <a href="https://dhalait.github.io/shortener/" target="_blank" class="btn">Go to URL Shortener</a>
-  </section>
+  <main>
 
-  <section id="team">
-    <h2>Our Team</h2>
-    <p>Meet the talented people behind Dhalait.</p>
-    <a href="/team/" class="btn">Go to Our Team</a>
-  </section>
+    <section class="block" id="about">
+      <span class="tag">About</span>
+      <p class="block-text">
+        Dhalait is a technology company focused on creating
+        simple, dependable, and human-friendly digital platforms.
+      </p>
+    </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Get in touch with our team to start your next project.</p>
-    <a href="mailto:info@dhalait.com" class="btn">Email Us</a>
-  </section>
-</main>
+    <section id="products" class="block soft">
+      <span class="tag">Products</span>
 
+      <div class="cards">
+        <div class="card float">
+          <h3>URL Shortener</h3>
+          <p>
+            A fast, minimal and developer-friendly
+            URL shortener designed for everyday use.
+          </p>
+
+          <!-- Animated open link -->
+          <a href="/shortener/" target="_blank" class="open-link">
+            <span>Open</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 5l6 7-6 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="card float delay">
+          <h3>Coming Soon</h3>
+          <p>
+            Thoughtfully crafted tools are currently
+            being designed and built.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="team">
+      <span class="tag">Team</span>
+      <p class="block-text">
+        A small group of engineers and designers
+        who love building things that feel good to use.
+      </p>
+      <a href="/team/" class="cta ghost">Meet the Team</a>
+    </section>
+
+    <section class="block soft" id="contact">
+      <span class="tag">Contact</span>
+      <p class="block-text">
+        Want to collaborate or just say hello?
+      </p>><br>
+      <a href="mailto:info@dhalait.com" class="cta">Get in Touch</a>
+    </section>
+
+  </main>
 
   <footer>
-    &copy; 2026 Dhalait. All rights reserved.
+    © 2026 Dhalait
   </footer>
+
 </body>
 </html>
-
-
-
