@@ -234,3 +234,17 @@ footer {
 .back-home {
   margin-top: 50px;
 }
+
+.banner {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #fff; /* optional, in case you want a background */
+}
+
+.banner-image {
+  max-width: 250px; /* limits the banner size */
+  width: 80%;       /* scales down on small screens */
+  height: auto;     /* keeps aspect ratio */
+  display: inline-block;
+}
+
