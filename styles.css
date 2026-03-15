@@ -1,8 +1,9 @@
 :root{
 --text:#111;
---muted:#6a6a6a;
---border:#e6e6e6;
+--muted:#6b6b6b;
+--border:#e8e8e8;
 --soft:#fafafa;
+--maxw:1100px;
 }
 
 *{
@@ -20,281 +21,267 @@ font-family:Inter,sans-serif;
 background:#fff;
 color:var(--text);
 line-height:1.7;
-}
-
-body{
-
-font-family:Inter,sans-serif;
-background:#fff;
-color:var(--text);
-line-height:1.7;
-
+-webkit-font-smoothing:antialiased;
 }
 
 a{
 text-decoration:none;
 color:inherit;
+transition:opacity .2s ease;
+}
+
+a:hover{
+opacity:.7;
+}
+
+img{
+max-width:100%;
+display:block;
 }
 
 .nav{
-
 position:fixed;
 top:0;
 width:100%;
 background:#fff;
 border-bottom:1px solid var(--border);
-z-index:10;
-
+z-index:100;
+backdrop-filter:blur(6px);
 }
 
 .nav-inner{
-
-max-width:1200px;
+max-width:var(--maxw);
 margin:auto;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:18px 24px;
-
 }
 
 .logo img{
-
-height:64px;
-
+height:56px;
 }
 
 nav{
-
 display:flex;
-gap:32px;
+gap:34px;
 font-size:14px;
 color:var(--muted);
-
+font-weight:500;
 }
 
-nav a:hover{
+nav a{
+position:relative;
+}
 
-color:var(--text);
+nav a::after{
+content:"";
+position:absolute;
+bottom:-6px;
+left:0;
+width:0%;
+height:1px;
+background:#111;
+transition:width .25s ease;
+}
 
+nav a:hover::after{
+width:100%;
 }
 
 .hero{
-
-padding-top:160px;
-padding-bottom:140px;
+padding-top:180px;
+padding-bottom:160px;
 text-align:center;
-
 }
 
 .hero-inner{
-
 max-width:720px;
 margin:auto;
-
+padding:0 24px;
 }
 
 .hero-logo{
-
-width:180px;
+width:160px;
+margin:auto;
 margin-bottom:48px;
-
 }
 
 .hero h1{
-
 font-size:64px;
 font-weight:800;
 letter-spacing:-2px;
-margin-bottom:28px;
+margin-bottom:20px;
+}
 
+.hero h2{
+font-size:22px;
+font-weight:600;
+color:var(--muted);
+margin-bottom:26px;
 }
 
 .hero p{
-
 font-size:20px;
 color:var(--muted);
+}
 
+.motto{
+margin-top:30px;
+font-size:18px;
+font-weight:600;
+color:var(--text);
 }
 
 .section-inner{
-
 max-width:900px;
 margin:auto;
 padding:120px 24px;
 text-align:center;
-
 }
 
 .section-inner h2{
-
 font-size:40px;
 margin-bottom:40px;
-
+letter-spacing:-1px;
 }
 
 .lead{
-
-font-size:20px;
-margin-bottom:20px;
-
+font-size:21px;
+margin-bottom:26px;
 }
 
 .section-inner p{
-
 font-size:18px;
 color:var(--muted);
 margin-bottom:18px;
-
 }
 
-.principles{
-
+.soft{
 background:var(--soft);
-
 }
 
-.principle-grid{
-
+.grid{
 display:flex;
-gap:60px;
+gap:50px;
 flex-wrap:wrap;
 justify-content:center;
-margin-top:40px;
-
+margin-top:50px;
 }
 
-.principle{
-
+.card{
 width:260px;
-
 }
 
-.principle h3{
+.card h3{
+font-size:18px;
+margin-bottom:12px;
+}
 
-margin-bottom:10px;
-
+.card p{
+font-size:16px;
 }
 
 .products{
-
 border-top:1px solid var(--border);
-
 }
 
 .product-card{
-
-max-width:420px;
+max-width:440px;
 margin:auto;
 border:1px solid var(--border);
-border-radius:20px;
+border-radius:16px;
 padding:40px;
+transition:transform .2s ease, box-shadow .2s ease;
+}
 
+.product-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
 
 .product-card h3{
-
-margin-bottom:10px;
-
+font-size:22px;
+margin-bottom:12px;
 }
 
 .product-card p{
-
-margin-bottom:20px;
-
+margin-bottom:22px;
 }
 
 .product-link{
-
 font-weight:600;
-
+font-size:15px;
 }
 
 footer{
-
 border-top:1px solid var(--border);
-padding:80px 24px;
-
+padding:90px 24px;
 }
 
 .footer-inner{
-
-max-width:1200px;
+max-width:var(--maxw);
 margin:auto;
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
-gap:60px;
-
+gap:70px;
 }
 
 .footer-brand img{
-
-height:60px;
-margin-bottom:10px;
-
+height:52px;
+margin-bottom:12px;
 }
 
 .footer-brand p{
-
 color:var(--muted);
 margin-bottom:6px;
-
+font-size:15px;
 }
 
 .footer-title{
-
 font-weight:600;
-margin-bottom:12px;
-
+margin-bottom:14px;
+font-size:15px;
 }
 
 .footer-columns{
-
 display:flex;
-gap:80px;
-
+gap:70px;
 }
 
 .footer-columns a{
-
 display:block;
-margin-bottom:6px;
+margin-bottom:8px;
 color:var(--muted);
-
+font-size:15px;
 }
 
 .footer-columns a:hover{
-
 color:var(--text);
-
 }
 
-@media(max-width:800px){
+@media(max-width:900px){
 
 nav{
-
 display:none;
-
 }
 
 .hero h1{
-
 font-size:42px;
-
 }
 
-.principle-grid{
+.hero h2{
+font-size:18px;
+}
 
+.grid{
 flex-direction:column;
 align-items:center;
-
 }
 
 .footer-inner{
-
 flex-direction:column;
-
 }
 
 }
