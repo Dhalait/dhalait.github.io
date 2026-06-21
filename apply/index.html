@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Apply | DHALAIT</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+
+<body>
+
+
+<header>
+
+<a href="/"><img src="../logo.png" class="logo"></a>
+
+<nav>
+
+<a href="/about/">About</a>
+<a href="/mission/">Mission</a>
+<a href="/products/">Products</a>
+<a href="/careers/">Careers</a>
+<a href="/labs/">Labs</a>
+
+</nav>
+
+</header>
+
+
+
+
+<main class="page">
+
+
+<h1>Application</h1>
+
+
+<p>
+Join Dhalait and help build the future.
+</p>
+
+
+
+
+<form 
+action="https://formspree.io/f/xzdlpkwq"
+method="POST"
+enctype="multipart/form-data"
+>
+
+
+
+
+<h2>Position</h2>
+
+
+<input
+list="roles"
+id="role"
+name="Role Applying For"
+placeholder="Role applying for"
+required
+>
+
+
+<datalist id="roles">
+
+<option value="Software Engineer">
+
+<option value="Marketing Head">
+
+</datalist>
+
+
+
+
+
+<h2>Your details</h2>
+
+
+<input
+type="text"
+name="Name"
+placeholder="Full name"
+required
+>
+
+
+
+<input
+type="email"
+name="Email"
+placeholder="Email address"
+required
+>
+
+
+
+<input
+type="text"
+name="Location"
+placeholder="Location (optional)"
+>
+
+
+
+
+
+<h2>About you</h2>
+
+
+<textarea
+name="About"
+placeholder="Tell us about yourself, your skills and experience"
+required>
+</textarea>
+
+
+
+
+<textarea
+name="Why Dhalait"
+placeholder="Why do you want to join Dhalait?"
+required>
+</textarea>
+
+
+
+
+
+
+<h2>Links</h2>
+
+
+<input
+type="url"
+name="Portfolio"
+placeholder="Portfolio link (optional)"
+>
+
+
+
+<input
+type="url"
+name="GitHub"
+placeholder="GitHub link (optional)"
+>
+
+
+
+<input
+type="url"
+name="LinkedIn"
+placeholder="LinkedIn link (optional)"
+>
+
+
+
+<input
+type="url"
+name="Website"
+placeholder="Personal website link (optional)"
+>
+
+
+
+
+
+<h2>Resume</h2>
+
+
+<label class="resume-box">
+
+
+<span>
+Upload Resume (optional)
+</span>
+
+
+<input
+type="file"
+name="Resume"
+accept=".pdf,.doc,.docx"
+>
+
+
+</label>
+
+
+
+
+
+<button type="submit">
+
+Submit Application
+
+</button>
+
+
+
+
+</form>
+
+
+
+</main>
+
+
+
+
+
+<footer>
+
+
+
+<div class="footergrid">
+
+
+
+<div>
+
+
+<img src="/logo.png" class="logo">
+
+
+<p>
+
+Building the next generation of ideas.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div>
+
+<h3>
+
+Company
+
+</h3>
+
+
+<a href="/about/">
+
+About
+
+</a>
+
+
+<a href="/mission/">
+
+Mission
+
+</a>
+
+
+<a href="/careers/">
+
+Careers
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Explore
+
+</h3>
+
+
+<a href="/products/">
+
+Products
+
+</a>
+
+<a href="/careers/">
+
+Careers
+
+</a>
+
+<a href="/labs/">
+
+labs
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Connect
+
+</h3>
+
+
+
+<a href="https://github.com/Dhalait">
+
+GitHub
+
+</a>
+
+
+<a href="https://linkedin.com">
+
+LinkedIn
+
+</a>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bottom">
+
+
+<span>
+
+© <span id="year"></span> Dhalait
+
+</span>
+
+
+<span>
+
+All Rights Reserved
+
+</span>
+
+
+</div>
+
+
+
+</footer>
+
+
+
+
+
+<script>
+
+
+const params = new URLSearchParams(window.location.search);
+
+
+const role = params.get("role");
+
+
+if(role){
+
+document.getElementById("role").value = role;
+
+}
+
+
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
